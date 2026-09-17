@@ -1,10 +1,10 @@
 ---
-name: jiang-local-store
+name: aningneo-local-store
 description: >
   Prepares consistent local-store visuals, food brand photography and complete promotional notes. Use for 实体店生图、菜品图、食品品牌图、多风格食品摄影、门头、菜单、活动海报、餐饮小红书图文、C端种草笔记、B端品牌或老板笔记. Selects food styles from source photos and checks visible before/after improvements. Preserves dish identity, store facts, prices and offers. Uses task-level image2-api by default for teaching, preserves explicitly selected flova-production tasks, and routes note layout to Guizang Social Card. Does not provide construction drawings or automatically operate delivery platforms or deploy websites.
 ---
 
-# Jiang-local-store
+# ANingNeo Local Store
 
 把同一家门店的定位、菜品卖点、活动规则和图片，转成菜品图、门头预览、菜单、活动视觉，以及标题、正文、图片顺序都配好的推广笔记。新教学任务默认 `runtime_profile=image2-api`；用户明确指定或已经保存为 Flova 的当前生产任务继续 `flova-production`。只在本次任务记录路由，不因教程默认值改变其他窗口或现有 Flova 项目。笔记排版走 `guizang-social-card-skill`；已有合适图片直接复用，不为排版重复生图。
 

@@ -17,7 +17,7 @@
 复制 `config/image2.env.example` 到下面这个仅本机可读的位置：
 
 ```text
-~/.config/jiang-local-store/image2.env
+~/.config/aningneo-local-store/image2.env
 ```
 
 将文件权限设为 `600`。不要把真实密钥写进 Skill、项目仓库、Prompt、日志或聊天。环境变量优先于配置文件，适合临时切换中转站。
@@ -83,6 +83,6 @@ python scripts/image2_api.py doctor --probe-models
 
 ## 本包位置
 
-本页命令均在jiang-local-store目录运行。配置示例见[image2.env.example](../../config/image2.env.example)，脚本见[image2_api.py](../../scripts/image2_api.py)。不要求安装另一个Skill。
+本页命令均在aningneo-local-store目录运行。配置示例见[image2.env.example](../../config/image2.env.example)，脚本见[image2_api.py](../../scripts/image2_api.py)。不要求安装另一个Skill。
 
 默认doctor只检查本地配置，不是鉴权、余额、模型身份或出图验收。真实费用与素材授权齐备后，先完成一张小样。Windows等平台的配置权限行为须在本机确认；环境变量方式不要求复制配置文件，不自动放宽权限。

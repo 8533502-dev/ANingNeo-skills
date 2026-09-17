@@ -235,7 +235,7 @@ def atomic_write_image(target: Path, data: bytes, expected_format: str | None = 
 
 def read_image_url(url: str, *secrets: str) -> bytes:
     validate_download_url(url)
-    request = urllib.request.Request(url, headers={"User-Agent": "jiang-local-store/1.0"})
+    request = urllib.request.Request(url, headers={"User-Agent": "aningneo-local-store/1.0"})
     opener = urllib.request.build_opener(SafeImageRedirectHandler())
     try:
         with opener.open(request, timeout=300) as response:
@@ -261,7 +261,7 @@ def config_path() -> Path:
     override = env_first("IMAGE2_CONFIG_FILE")
     if override:
         return Path(override).expanduser().resolve()
-    return Path.home() / ".config" / "jiang-local-store" / "image2.env"
+    return Path.home() / ".config" / "aningneo-local-store" / "image2.env"
 
 
 def load_config(path: Path) -> dict[str, str]:
@@ -332,7 +332,7 @@ def join_endpoint(base_url: str, path: str) -> str:
 def auth_headers(settings: dict[str, str]) -> dict[str, str]:
     header = settings["auth_header"]
     prefix = settings["auth_prefix"]
-    headers = {header: f"{prefix}{settings['api_key']}", "User-Agent": "jiang-local-store/1.0"}
+    headers = {header: f"{prefix}{settings['api_key']}", "User-Agent": "aningneo-local-store/1.0"}
     raw_extra = settings.get("extra_headers", "")
     if raw_extra:
         try:
@@ -428,7 +428,7 @@ def request_json(url: str, headers: dict[str, str], payload: dict, secrets: tupl
 
 
 def multipart_body(fields: dict[str, str], files: list[tuple[str, Path]]) -> tuple[bytes, str]:
-    boundary = f"----jiang-local-store-{uuid.uuid4().hex}"
+    boundary = f"----aningneo-local-store-{uuid.uuid4().hex}"
     chunks: list[bytes] = []
     for name, value in fields.items():
         chunks.extend(

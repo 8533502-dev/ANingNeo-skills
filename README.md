@@ -10,15 +10,15 @@ ANingNeo Skills 面向真实业务使用，不是提示词收藏夹。每个 Ski
 
 | Skill | 核心用途 | 当前状态 |
 | --- | --- | --- |
-| [\`aningneo-knowledge\`](skills/aningneo-knowledge/) | 把个人、团队或自媒体资料整理成 AI 能持续读取和维护的知识系统 | v0.4.0 |
-| [\`aningneo-research\`](skills/aningneo-research/) | 调研多平台账号、作品、评论、字幕与公开数据，批量前先估算请求和费用 | v0.8.0 |
-| [\`Jiang-local-store\`](skills/jiang-local-store/) | 为实体门店制作菜品图、菜单、活动海报、门头预览和图文笔记 | v0.1.1 |
+| [`aningneo-knowledge`](skills/aningneo-knowledge/) | 把个人、团队或自媒体资料整理成 AI 能持续读取和维护的知识系统 | v0.4.0 |
+| [`aningneo-research`](skills/aningneo-research/) | 调研多平台账号、作品、评论、字幕与公开数据，批量前先估算请求和费用 | v0.8.0 |
+| [`ANingNeo Local Store`](skills/aningneo-local-store/) | 为实体门店制作菜品图、菜单、活动海报、门头预览和图文笔记 | v0.1.1 |
 
 三套能力可以独立安装，也可以组合使用：
 
-- 用 \`aningneo-research\` 获取公开信息与结构化素材；
-- 用 \`aningneo-knowledge\` 沉淀资料、规则和项目经验；
-- 用 \`Jiang-local-store\` 完成门店视觉内容与推广物料。
+- 用 `aningneo-research` 获取公开信息与结构化素材；
+- 用 `aningneo-knowledge` 沉淀资料、规则和项目经验；
+- 用 `ANingNeo Local Store` 完成门店视觉内容与推广物料。
 
 ## 设计方式
 
@@ -35,23 +35,23 @@ ANingNeo Skills 统一遵循四个原则：
 
 安装知识库 Skill：
 
-\`\`\`bash
+```bash
 npx -y skills@latest add 8533502-dev/ANingNeo-skills \
   --skill aningneo-knowledge \
   -y
-\`\`\`
+```
 
 安装调研 Skill：
 
-\`\`\`bash
+```bash
 npx -y skills@latest add 8533502-dev/ANingNeo-skills \
   --skill aningneo-research \
   -y
-\`\`\`
+```
 
 实体门店 Skill 可直接从 Release 下载：
 
-[下载 Jiang-local-store.zip](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/Jiang-local-store.zip)
+[下载 aningneo-local-store.zip](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-local-store.zip)
 
 ---
 
@@ -59,7 +59,7 @@ npx -y skills@latest add 8533502-dev/ANingNeo-skills \
 
 ### 让资料真正变成 AI 的工作系统
 
-普通资料库解决的是“文件放在哪里”，\`aningneo-knowledge\` 解决的是另一件事：AI 如何找到资料、理解规则、执行任务、检查结果，并把纠正后的经验继续写回系统。
+普通资料库解决的是“文件放在哪里”，`aningneo-knowledge` 解决的是另一件事：AI 如何找到资料、理解规则、执行任务、检查结果，并把纠正后的经验继续写回系统。
 
 ![ANingNeo Knowledge Harness：输入、规则、执行、反馈与进化](skills/aningneo-knowledge/assets/aningneo-knowledge-harness.png)
 
@@ -74,7 +74,7 @@ npx -y skills@latest add 8533502-dev/ANingNeo-skills \
 
 适合这样调用：
 
-\`\`\`text
+```text
 调用 aningneo-knowledge，为我的 AI 科技自媒体建立知识库。
 先给出目录和规则预览，不要直接写入。
 
@@ -83,7 +83,7 @@ npx -y skills@latest add 8533502-dev/ANingNeo-skills \
 
 调用 aningneo-knowledge，检查当前知识库健康状态。
 列出失效链接、重复内容、缺失索引和需要人工确认的问题。
-\`\`\`
+```
 
 [查看详细说明](skills/aningneo-knowledge/README.md) · [下载 ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-knowledge.zip)
 
@@ -93,7 +93,7 @@ npx -y skills@latest add 8533502-dev/ANingNeo-skills \
 
 ### 从零散搜索升级为可估价、可抽样、可追溯的调研流程
 
-\`aningneo-research\` 面向公开社媒数据调研。它先确认平台、接口和单价，再拆分请求数量，运行 1–3 条样本，最后才进入批量采集与结构化交付。
+`aningneo-research` 面向公开社媒数据调研。它先确认平台、接口和单价，再拆分请求数量，运行 1–3 条样本，最后才进入批量采集与结构化交付。
 
 支持的典型平台包括：
 
@@ -115,8 +115,8 @@ npx -y skills@latest add 8533502-dev/ANingNeo-skills \
 Skill 本身免费开源，自动采集路线使用用户自己的第三方 TikHub API：
 
 - 本项目不代理、不转售 TikHub，也不代表 TikHub 官方合作或背书；
-- 用户自行注册、充值并配置 \`TIKHUB_API_KEY\`；
-- 多数接口公开价格从约 \`0.001 USD / 次\`起，不同端点通常约为 \`0.001–0.01 USD / 次\`；
+- 用户自行注册、充值并配置 `TIKHUB_API_KEY`；
+- 多数接口公开价格从约 `0.001 USD / 次`起，不同端点通常约为 `0.001–0.01 USD / 次`；
 - 少数特殊端点与第三方语音识别服务可能产生更高费用；
 - 每次批量任务都会先查询端点、估算调用次数与成本，并先跑小样本；
 - 实际价格与免费额度可能变化，以 [TikHub 价格页](https://tikhub.io/pricing)和[接入指南](https://tikhub.io/getting-started)为准。
@@ -129,7 +129,7 @@ Skill 本身免费开源，自动采集路线使用用户自己的第三方 TikH
 
 适合这样调用：
 
-\`\`\`text
+```text
 调用 aningneo-research，调研这个小红书账号最近 100 条作品。
 先确认端点和价格，只跑 3 条样本，确认后再继续。
 
@@ -138,26 +138,26 @@ Skill 本身免费开源，自动采集路线使用用户自己的第三方 TikH
 
 调用 aningneo-research，处理这份已有的社媒 Excel。
 保留原始文件，清洗去重后生成评论洞察和内容方向。
-\`\`\`
+```
 
 首次配置自己的 Key：
 
-\`\`\`bash
+```bash
 python3 .agents/skills/aningneo-research/scripts/tikhub_request.py --configure-local-key
 python3 .agents/skills/aningneo-research/scripts/tikhub_request.py --check-config
-\`\`\`
+```
 
-Key 默认保存在 Skill 目录的 \`scripts/.tikhub_api_key\`，也支持独立 Key 文件、\`config.json\`、环境变量和 macOS Keychain。公开仓库和 Release 包不会预置真实 Key。
+Key 默认保存在 Skill 目录的 `scripts/.tikhub_api_key`，也支持独立 Key 文件、`config.json`、环境变量和 macOS Keychain。公开仓库和 Release 包不会预置真实 Key。
 
 [查看详细说明](skills/aningneo-research/) · [下载 ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-research.zip)
 
 ---
 
-## Jiang-local-store
+## ANingNeo Local Store
 
 ### 一套适合真实门店素材的内容生产入口
 
-\`Jiang-local-store\` 把门店常见的视觉任务放进统一流程：先核对商品、价格、活动和门店事实，再处理图片和文案，避免为了视觉效果编造信息。
+`ANingNeo Local Store` 把门店常见的视觉任务放进统一流程：先核对商品、价格、活动和门店事实，再处理图片和文案，避免为了视觉效果编造信息。
 
 它可以协助制作：
 
@@ -169,7 +169,7 @@ Key 默认保存在 Skill 目录的 \`scripts/.tikhub_api_key\`，也支持独�
 
 包内包含 Image 2 同步 / 异步脚本、三种 SVG 模板、四份示例和风格参考。图片服务由使用者自行选择、配置和付费，本 Skill 不包含任何 API Key，也不会自动操作外卖后台、发布社媒内容或上线网站。
 
-[查看使用说明](skills/jiang-local-store/README.md) · [下载 ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/Jiang-local-store.zip)
+[查看使用说明](skills/aningneo-local-store/README.md) · [下载 ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-local-store.zip)
 
 ## 安全与执行边界
 

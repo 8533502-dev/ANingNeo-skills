@@ -57,7 +57,7 @@ def config_candidates() -> list[Path]:
     if override:
         return [Path(override).expanduser().resolve()]
     return [
-        Path.home() / ".config" / "jiang-local-store" / "apimart.env",
+        Path.home() / ".config" / "aningneo-local-store" / "apimart.env",
     ]
 
 
@@ -130,7 +130,7 @@ def auth_headers(api_key: str) -> dict[str, str]:
     return {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "User-Agent": "jiang-local-store/1.0",
+        "User-Agent": "aningneo-local-store/1.0",
     }
 
 

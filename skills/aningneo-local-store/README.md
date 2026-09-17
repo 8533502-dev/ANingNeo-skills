@@ -1,8 +1,8 @@
-# Jiang-local-store · 餐饮视觉 Skill
+# ANingNeo Local Store · 餐饮视觉 Skill
 
 为实体餐饮门店准备的一站式视觉工作流：从菜品主图和食品摄影风格，到菜单、海报、活动素材、门头预览和推广笔记，都集中在同一个可下载 Skill 中，并随包提供 Image2 接口脚本。
 
-[下载Jiang-local-store.zip](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/Jiang-local-store.zip) · [安装与配置](references/workbuddy-install.md) · [三种可填模板](references/builtin-templates.md)
+[下载aningneo-local-store.zip](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-local-store.zip) · [安装与配置](references/workbuddy-install.md) · [三种可填模板](references/builtin-templates.md)
 
 ## 包里有什么
 
@@ -13,7 +13,7 @@
 | 3种SVG模板、4份完整示例与PNG预览 | 填字、嵌入原图、受限节日换版；不靠模型生成价格和规则 |
 | C端种草与B端品牌笔记工作流 | 内容、配图顺序与事实审核；指定归藏排版需宿主已有相应能力 |
 
-解压后只有一个jiang-local-store目录、一个SKILL.md。Image2引擎已经在包内，不用再安装第二个Skill。安装方式以当前WorkBuddy版本实际提供的导入或目录机制为准；本包不声称已经在你的电脑安装或识别成功。
+解压后只有一个aningneo-local-store目录、一个SKILL.md。Image2引擎已经在包内，不用再安装第二个Skill。安装方式以当前WorkBuddy版本实际提供的导入或目录机制为准；本包不声称已经在你的电脑安装或识别成功。
 
 ## 先做不扣费的小测试
 

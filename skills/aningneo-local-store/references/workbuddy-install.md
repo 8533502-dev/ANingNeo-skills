@@ -2,7 +2,7 @@
 
 ## 安装一个Skill
 
-下载并解压Jiang-local-store.zip，得到一个jiang-local-store目录。这个目录中只有一个SKILL.md，已包含菜品/门店规则、Image2脚本、接口说明、配置示例、SVG模板与演示素材；不需要另装电商Skill。
+下载并解压aningneo-local-store.zip，得到一个aningneo-local-store目录。这个目录中只有一个SKILL.md，已包含菜品/门店规则、Image2脚本、接口说明、配置示例、SVG模板与演示素材；不需要另装电商Skill。
 
 根据当前WorkBuddy版本实际提供的Skill导入或目录机制接入整个目录。不要只复制SKILL.md，也不要把一个指向作者电脑的桥接页当成安装包。导入后应实际确认宿主能读取references、scripts、assets和用户附件。本包未把某个未经验证的斜杠命令作为安装证明。
 
@@ -24,14 +24,14 @@ Python 3.9或更新版本可运行包内脚本。PNG的图片校验使用标准�
 
 默认私有配置位置：
 
-    ~/.config/jiang-local-store/image2.env
-    ~/.config/jiang-local-store/apimart.env
+    ~/.config/aningneo-local-store/image2.env
+    ~/.config/aningneo-local-store/apimart.env
 
 也可显式设置IMAGE2_CONFIG_FILE或APIMART_CONFIG_FILE。环境变量优先，不搜索作者的个人历史配置。不要把真实Key放进Skill、Git仓库、Prompt、聊天或日志。Unix配置文件须仅当前用户可读；其他平台先验证安全权限行为，可使用环境变量，不擅自放宽限制。
 
 ## 安装配置提示词
 
-    请将jiang-local-store作为一个完整Skill接入当前WorkBuddy。
+    请将aningneo-local-store作为一个完整Skill接入当前WorkBuddy。
     实际确认能读取包内SKILL.md、references、scripts、assets和我的输入附件。
     本次新教学任务使用runtime_profile=image2-api，不改已有Flova任务。
     只使用我选择的供应商与本机私有配置。先运行--help与doctor。
@@ -41,7 +41,7 @@ Python 3.9或更新版本可运行包内脚本。PNG的图片校验使用标准�
 
 ## 不扣费的输入预检
 
-以下命令在jiang-local-store目录运行，使用随包虚构演示图，只检查本地输入，不创建远端任务：
+以下命令在aningneo-local-store目录运行，使用随包虚构演示图，只检查本地输入，不创建远端任务：
 
     python3 scripts/image2_api.py generate --prompt-file assets/demo/image-edit-prompt.txt --size 1024x1536 --dry-run
     python3 scripts/image2_api.py edit --image assets/demo/dish-photo.png --prompt-file assets/demo/image-edit-prompt.txt --size 1024x1536 --dry-run

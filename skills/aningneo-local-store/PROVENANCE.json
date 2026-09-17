@@ -1,29 +1,29 @@
 {
-  "package": "jiang-local-store",
+  "package": "aningneo-local-store",
   "version": "0.1.1",
   "source_policy": "Distribution-only transformations; canonical sources are not edited. Paths identify source Skill resources, never a private machine location.",
   "files": [
     {
       "distribution_file": "LICENSE",
-      "distribution_sha256": "416c108fe970c0c917901fab28fe277079b1177583e12e47502985642f6dc161",
+      "distribution_sha256": "6312a70d6ddb1563232b95d58b4242657549e2de058eeb04772764d4eeb21fc3",
       "operation": "copied",
       "source": "Authored for this single-Skill distribution"
     },
     {
       "distribution_file": "NOTICE.md",
-      "distribution_sha256": "7b82095de5e80366cbcb0785bf9eb0be067f779a0cc7d89ca94669450aeaaca6",
+      "distribution_sha256": "cadcbbadfbf652ae648fd689dc93b2bc0710da3dfda2e5c58a4c56e5429c1cbc",
       "operation": "copied",
       "source": "Authored for this single-Skill distribution"
     },
     {
       "distribution_file": "README.md",
-      "distribution_sha256": "046708c916c142f9a2f3f79a0c51dad4ce03f0775064bc1ec726dfcbc853ef33",
+      "distribution_sha256": "203f42b0c352aa613d490e343146b3496befb00d0f5be5f052a73b67c0e890a5",
       "operation": "copied",
       "source": "Authored for this single-Skill distribution"
     },
     {
       "distribution_file": "SKILL.md",
-      "distribution_sha256": "24d11cc395a0e006012006e16ce94c6bf4f39b708d4c7baf015c5e0dd446e480",
+      "distribution_sha256": "59fd51cd97e6aaa236540a745b7be2c832756aa840fe128e13351dbb58eb6a91",
       "operation": "single public Skill name; bundled engine; remove private audit entrypoints",
       "source_skill": "local-store-visual-studio",
       "source_relative_file": "SKILL.md",
@@ -39,7 +39,7 @@
     },
     {
       "distribution_file": "agents/openai.yaml",
-      "distribution_sha256": "dd62b4f9d6780fa76715e3282e9c49292b5269d637b4d2764830d3d9a842d1aa",
+      "distribution_sha256": "0afe0578959944bff48025dc1f24e723f76c0533485a322473e4d8722ef48a58",
       "operation": "public task-profile example and display name; no canonical change",
       "source_skill": "local-store-visual-studio",
       "source_relative_file": "agents/openai.yaml",
@@ -123,7 +123,7 @@
     },
     {
       "distribution_file": "assets/style-references/README.md",
-      "distribution_sha256": "6b018340550ec399b37025f621cbccc7b5c305583da53cb4104ca9348d135787",
+      "distribution_sha256": "5540d4c8fa03d4925017a328202ee6b54a21e6768297e7082104414f393ca608",
       "operation": "narrow public-distribution authorization; no commercial inference",
       "source_skill": "local-store-visual-studio",
       "source_relative_file": "assets/style-references/README.md",
@@ -131,7 +131,7 @@
     },
     {
       "distribution_file": "assets/style-references/SOURCES.json",
-      "distribution_sha256": "535f07e9dc8cf496721ca3fef44889d56e73977345c7a242b2e8ce6e7dc77624",
+      "distribution_sha256": "cd976b7ab993eba15880aac32957a39e561f23f3035a8a86614bdefd86b51003",
       "operation": "relative demo references and explicit narrow distribution rights",
       "source_skill": "local-store-visual-studio",
       "source_relative_file": "assets/style-references/SOURCES.json",
@@ -307,7 +307,7 @@
     },
     {
       "distribution_file": "config/apimart.env.example",
-      "distribution_sha256": "d059c65b6d3308d708696d859a3abde74ce05974da3b5a2edbded83e6f5a0819",
+      "distribution_sha256": "570191b9bfdc32d602ae48babb07ba744ba14f2b6e00c59af30d17626d57493f",
       "operation": "public namespace or bundled test documentation",
       "source_skill": "ecommerce-image-studio",
       "source_relative_file": "config/apimart.env.example",
@@ -315,7 +315,7 @@
     },
     {
       "distribution_file": "config/image2.env.example",
-      "distribution_sha256": "23b67aca7729684fd31d6ad56f1f04e485f3e75522873fd491d31dab428368a8",
+      "distribution_sha256": "88ef35e7868e426bf07f1613324caf7f973912038a52d5751df1076a28180ea6",
       "operation": "public namespace or bundled test documentation",
       "source_skill": "ecommerce-image-studio",
       "source_relative_file": "config/image2.env.example",
@@ -323,7 +323,7 @@
     },
     {
       "distribution_file": "evals/evals.json",
-      "distribution_sha256": "6579d909a5a01dcc366313fd5ee8510629ad66ba099a8ea6f1d97e96051b248f",
+      "distribution_sha256": "7323672f546938da5aed2319029d7131891b1c8ac7be5b9ab640288560868aca",
       "operation": "distribution paths and public identifier only",
       "source_skill": "local-store-visual-studio",
       "source_relative_file": "evals/evals.json",
@@ -403,7 +403,7 @@
     },
     {
       "distribution_file": "references/image2/apimart-setup.md",
-      "distribution_sha256": "eb54109caeb1151ec842f6c21fd5d5b57f38e4261a364fa7825ecb7126f2c71d",
+      "distribution_sha256": "372d57f6472a4b2d2c8f8f4045e0482e756ad98a2e2c6a54f6c292665a65ce6e",
       "operation": "public config namespace and existing safety guidance; pending status and no-resubmit guidance; preserve published provider route",
       "source_skill": "ecommerce-image-studio",
       "source_relative_file": "references/apimart-setup.md",
@@ -425,7 +425,7 @@
     },
     {
       "distribution_file": "references/image2/relay-setup.md",
-      "distribution_sha256": "72698881190839cbb6ee178c29ff34db5da7ae573e10ad3ee1a34c2b4915f06d",
+      "distribution_sha256": "ff05c0b62e99db59ddadaafdcccb05c9ecc5e2ebe10df694c234f53cc7492cb7",
       "operation": "self-contained paths; public config namespace; explicit verification limits; trusted HTTPS and authenticated redirect rejection documented",
       "source_skill": "ecommerce-image-studio",
       "source_relative_file": "references/relay-setup.md",
@@ -481,7 +481,7 @@
     },
     {
       "distribution_file": "references/workbuddy-install.md",
-      "distribution_sha256": "69b11819894e0f0f31396b4b7b20e9201286a723f52a0077ffa14a1078bb7e19",
+      "distribution_sha256": "896be3109c8fe5a139de2671bc586fade98380c75bb75319158d2bb4eb1f375c",
       "operation": "single-Skill installation; bundled configuration and examples",
       "source_skill": "local-store-visual-studio",
       "source_relative_file": "references/workbuddy-install.md",
@@ -489,7 +489,7 @@
     },
     {
       "distribution_file": "scripts/apimart_image.py",
-      "distribution_sha256": "518e496064905368ac4e3216f7287d2a0a199df204932a9b172998f769d99522",
+      "distribution_sha256": "e4c57260d4dff7e231d2a0efbda7bcfca7c34c845b2cd8ccdc615819165ebc93",
       "operation": "public namespace; remove personal fallback; pending polling compatibility; preserve published gpt-image-2 model default",
       "source_skill": "ecommerce-image-studio",
       "source_relative_file": "scripts/apimart_image.py",
@@ -505,7 +505,7 @@
     },
     {
       "distribution_file": "scripts/image2_api.py",
-      "distribution_sha256": "914ead228d095d7cbb08cb0b3e6929f04032a41102abacdbd4791e767efd8a79",
+      "distribution_sha256": "4efa4b56d64a12c64c447c78613be9f5ef58c692b37300b22fc496adf1334342",
       "operation": "bundled authenticated-redirect-safe adapter or tests; public namespace; APIMart personal fallback removed",
       "source_skill": "ecommerce-image-studio",
       "source_relative_file": "scripts/image2_api.py",
@@ -522,5 +522,5 @@
   ],
   "manifest_excludes_itself": true,
   "public_assets_rights": "See NOTICE.md and assets/style-references/SOURCES.json",
-  "display_name": "Jiang-local-store"
+  "display_name": "ANingNeo Local Store"
 }

@@ -7,7 +7,7 @@
 复制 `config/apimart.env.example` 到：
 
 ```text
-~/.config/jiang-local-store/apimart.env
+~/.config/aningneo-local-store/apimart.env
 ```
 
 将权限设为 `600`。真实密钥不得进入 Skill、项目、Prompt、日志、压缩包或聊天。
@@ -63,6 +63,6 @@ python3 scripts/apimart_image.py generate \
 
 ## 本包位置与任务中断
 
-本页命令在jiang-local-store目录运行，脚本见[apimart_image.py](../../scripts/apimart_image.py)，配置示例见[apimart.env.example](../../config/apimart.env.example)。同目录的image2_api.py提供共享图片校验，不能删掉。
+本页命令在aningneo-local-store目录运行，脚本见[apimart_image.py](../../scripts/apimart_image.py)，配置示例见[apimart.env.example](../../config/apimart.env.example)。同目录的image2_api.py提供共享图片校验，不能删掉。
 
 CLI目前没有resume或status子命令。提交结果不明确或等待超时时，先保存task_id，由人工或另行验证的查询工具核对原任务；不要默认重发generate造成重复扣费。本包不保证中断恢复、计费结果或供应商模型身份。
