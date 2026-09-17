@@ -1,0 +1,92 @@
+name: Publish release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/publish-release.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.repository == '8533502-dev/ANingNeo-skills'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build packages and publish release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          version="$(tr -d '[:space:]' < VERSION)"
+          tag="v${version}"
+
+          if gh release view "${tag}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+            echo "Release ${tag} already exists; nothing to publish."
+            exit 0
+          fi
+
+          mkdir -p \
+            stage/aningneo-knowledge \
+            stage/aningneo-research \
+            stage/Jiang-local-store \
+            dist
+
+          cp -a skills/aningneo-knowledge/. stage/aningneo-knowledge/
+          cp -a skills/aningneo-research/. stage/aningneo-research/
+          cp -a skills/jiang-local-store/. stage/Jiang-local-store/
+
+          cp LICENSE stage/aningneo-knowledge/LICENSE
+          cp NOTICE.md stage/aningneo-knowledge/NOTICE.md
+          cp LICENSE stage/aningneo-research/LICENSE
+          cp NOTICE.md stage/aningneo-research/NOTICE.md
+          cp NOTICE.md stage/Jiang-local-store/ANINGNEO_NOTICE.md
+
+          (
+            cd stage
+            zip -qr ../dist/aningneo-knowledge.zip aningneo-knowledge
+            zip -qr ../dist/aningneo-research.zip aningneo-research
+            zip -qr ../dist/Jiang-local-store.zip Jiang-local-store
+          )
+
+          cat > dist/release-notes.md <<'EOF'
+          ## ANingNeo 品牌化版本
+
+          这是在 MIT License 条款下基于上游开源项目重新整理的 ANingNeo 版本。
+
+          ### 本次更新
+
+          - 保留原仓库全部 Skill、脚本、模板和使用流程
+          - 将当前品牌名称更新为 ANingNeo
+          - 将 Skill ID 更新为 `aningneo-knowledge` 和 `aningneo-research`
+          - 重新撰写项目介绍与面向用户的 Skill 说明
+          - 更新知识库说明图、脚本标识和自动化测试
+          - 保留上游 Git 历史、MIT 许可证和来源说明
+
+          ### 验证结果
+
+          - 34 个核心测试通过
+          - 12 个模板测试通过
+          - 66 个图片接口适配测试通过
+          - 3 个 Skill 结构验证通过
+
+          使用方法和核心工作流程保持不变。详细说明请查看仓库 README 和各 Skill 目录。
+          EOF
+
+          gh release create "${tag}" \
+            dist/aningneo-knowledge.zip \
+            dist/aningneo-research.zip \
+            dist/Jiang-local-store.zip \
+            --repo "${GITHUB_REPOSITORY}" \
+            --target "${GITHUB_SHA}" \
+            --title "ANingNeo Skills ${tag}" \
+            --notes-file dist/release-notes.md \
+            --latest
