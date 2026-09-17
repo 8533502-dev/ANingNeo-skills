@@ -8,10 +8,10 @@
 
 ## 执行命令
 
-由 `shengjiang-knowledge` 调用自身的巡检脚本：
+由 `aningneo-knowledge` 调用自身的巡检脚本：
 
 ```bash
-python3 "<shengjiang-knowledge 安装目录>/scripts/audit_knowledge_base.py" \
+python3 "<aningneo-knowledge 安装目录>/scripts/audit_knowledge_base.py" \
   --root "<知识库绝对路径>" \
   --format markdown \
   --save-state

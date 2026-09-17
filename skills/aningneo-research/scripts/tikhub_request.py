@@ -269,7 +269,7 @@ def request_json(
         "Authorization": f"Bearer {api_key}",
         "Accept": "application/json",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-        "User-Agent": "Shengjiang-Research/1.0",
+        "User-Agent": "ANingNeo-Research/1.0",
     }
     if body is not None:
         data = json.dumps(body, ensure_ascii=False).encode("utf-8")

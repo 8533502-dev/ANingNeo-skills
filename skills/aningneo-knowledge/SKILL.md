@@ -1,10 +1,10 @@
 ---
-name: shengjiang-knowledge
+name: aningneo-knowledge
 description: >
   搭建、接入、维护和检查本地系统知识库，让 Codex、Claude Code、WorkBuddy 等 Agent 能按入口加载用户画像、协作规则、当前工作和原始资料。用户提到“搭建知识库”“把文件夹变成知识库”“自媒体知识库”“个人 IP 工作台”“对标库”“选题池”“导入这些资料”“让 AI 读懂我的资料”“整理成结构化知识库”“知识库健康检查”“日常巡检”“检查断链”“多个最终版”“INDEX 失效”“记住这个教训”“别再犯这个错”时都应使用。支持下载后初始化通用或自媒体 Harness、读取并接入已有资料、保存健康状态、确认后修复，以及内置自我纠错循环；不负责云端 RAG 或未经确认的批量搬家。
 ---
 
-# shengjiang-knowledge：系统知识库搭建、资料接入与健康检查
+# aningneo-knowledge：系统知识库搭建、资料接入与健康检查
 
 ## 一句话定义
 
@@ -401,7 +401,7 @@ python3 scripts/audit_knowledge_base.py \
 
 ## 与其他任务的边界
 
-- 普通知识库搭建与自检：留在 `shengjiang-knowledge`。
+- 普通知识库搭建与自检：留在 `aningneo-knowledge`。
 - 大规模内容原子化、主题地图和选题装配：交给内容系统 Skill。
 - 多 Agent 平台迁移与桥接：交给 Agent 工作台迁移 Skill。
 - 飞书、Notion、向量库或企业权限系统：作为后续独立集成，不塞进首版。

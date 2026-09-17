@@ -40,7 +40,7 @@ python3 scripts/video_download_transcribe.py --key-file /path/to/my-tikhub-key -
 视频号解密器使用：
 
 ```bash
-export SHENGJIANG_WECHAT_DOWNLOADER="/path/to/download_wechat_videos.cjs"
+export ANINGNEO_WECHAT_DOWNLOADER="/path/to/download_wechat_videos.cjs"
 ```
 
 该路径属于用户自己的本机配置，不写入 Skill 或 Git。
@@ -113,5 +113,5 @@ python3 scripts/video_download_transcribe.py \
   --url "https://www.douyin.com/video/example" \
   --metadata-json sample.json \
   --transcribe off \
-  --out "/tmp/shengjiang-video-test"
+  --out "/tmp/aningneo-video-test"
 ```

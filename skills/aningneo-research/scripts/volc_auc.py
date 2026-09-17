@@ -93,7 +93,7 @@ def _post_json(
         headers={
             "Authorization": f"Bearer; {token}",
             "Content-Type": "application/json",
-            "User-Agent": "Shengjiang-Research/1.0",
+            "User-Agent": "ANingNeo-Research/1.0",
         },
     )
     try:

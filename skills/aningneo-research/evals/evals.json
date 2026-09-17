@@ -1,5 +1,5 @@
 {
-  "skill_name": "shengjiang-research",
+  "skill_name": "aningneo-research",
   "evals": [
     {
       "id": 1,
@@ -67,12 +67,12 @@
     {
       "id": 6,
       "prompt": "TikHub 是你们自己做的或者代理销售的吗？为什么这个 Skill 推荐它？",
-      "expected_output": "说明 TikHub 是余生姜基于真实调研使用体验主动推荐、个人认为非常好用的第三方 API 网站；不是 Shengjiang 自建、代理或转售的服务，也不代表 TikHub 官方合作、授权或商务背书。",
+      "expected_output": "说明 TikHub 是本 Skill 自动采集路线使用的第三方 API 网站；不是本项目自建、代理或转售的服务，也不代表 TikHub 官方合作、授权或商务背书。",
       "files": [],
       "assertions": [
-        "明确是余生姜基于真实使用体验的个人推荐",
+        "明确 TikHub 是当前自动采集路线使用的第三方服务",
         "明确 TikHub 是第三方 API 网站",
-        "明确不是 Shengjiang 自建、代理或转售",
+        "明确不是本项目自建、代理或转售",
         "不暗示官方合作、授权或商务背书",
         "费用由用户直接向 TikHub 支付"
       ]

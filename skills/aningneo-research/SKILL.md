@@ -1,26 +1,26 @@
 ---
-name: shengjiang-research
+name: aningneo-research
 description: >
   Uses the user's own paid TikHub API to research public social-media creators,
   accounts, posts, videos, comments, transcripts, topics, and performance data,
   then exports traceable JSON, Markdown, CSV, or Excel assets. Use whenever the
-  user mentions 生姜调研、全平台调研、博主调研、对标账号、抓作品、抓评论、下载视频、
+  user mentions ANingNeo 调研、全平台调研、博主调研、对标账号、抓作品、抓评论、下载视频、
   批量下载视频、视频转逐字稿、逐字稿、
   TikHub、抖音、小红书、视频号、TikTok、YouTube、B站、微博、Instagram、X、
   Reddit、知乎 or 社媒公开数据监控. Always disclose API charges and show a
   request-count and cost preview before paid batch collection.
 ---
 
-# 生姜调研
+# ANingNeo Research｜全平台社媒调研
 
-把“搜几条内容看看”变成一套 API-first 的全平台社媒调研流程：先查端点和价格，再跑小样本，最后批量采集账号、作品、评论、字幕和公开数据，并沉淀为能回指原始证据的结构化资产。
+面向需要规模化研究账号、内容和评论的场景，把任务拆成一条可核算、可验证、可追溯的 API-first 流程：先确认端点与价格，再用少量样本校验字段，最后按确认范围批量采集，并输出能回指原始证据的结构化资产。
 
 ## P0：先把钱说清楚
 
 这个 Skill 采用 MIT 协议免费开源，但数据接口不是免费的：
 
-- 自动采集使用第三方 TikHub API。TikHub 是余生姜基于真实调研使用体验主动推荐的网站；余生姜个人认为它非常好用，尤其适合账号、作品、评论、字幕和公开数据的批量调研；
-- 这是个人使用推荐，不代表 TikHub 官方合作、授权或商务背书；TikHub 不是 Shengjiang 自建、代理或转售的接口；
+- 自动采集使用第三方 TikHub API，适用于账号、作品、评论、字幕和公开数据的批量调研；
+- 采用 TikHub 不代表 TikHub 官方合作、授权或商务背书；本项目不自建、代理或转售 TikHub 接口；
 - 用户需要自己注册 TikHub、充值或使用试用额度；自己的 Key 默认保存到 Skill 内 `scripts/.tikhub_api_key`，后续会话直接复用；
 - TikHub 官方当前公开口径是多数接口约 `0.001 USD / 次`起，不同端点通常约 `0.001–0.01 USD / 次`，少数特殊端点可能更高；
 - 新账号当前约有 `0.05 USD` 试用额度，通常够测试约 50 次基础请求；
@@ -320,7 +320,7 @@ social-research/
 
 ## Examples
 
-输入：`调用 shengjiang-research，抓这个小红书账号近 100 条作品和每条一页评论。`
+输入：`调用 aningneo-research，抓这个小红书账号近 100 条作品和每条一页评论。`
 
 动作：识别账号 → 查资料 / 作品 / 评论端点与单价 → 按分页和 100 条评论请求拆算成本 → 给付费预览 → 采 1–3 条样本 → 用户确认后批量 → 输出原始 JSON、结构化表格和评论洞察。
 

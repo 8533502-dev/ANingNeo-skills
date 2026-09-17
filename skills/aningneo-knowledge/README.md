@@ -1,35 +1,35 @@
-# shengjiang-knowledge
+# aningneo-knowledge｜AI 知识库运行框架
 
-![shengjiang-knowledge Harness 全景闭环](assets/shengjiang-knowledge-harness.png)
+![aningneo-knowledge Harness 全景闭环](assets/aningneo-knowledge-harness.png)
 
-> 不是整理文件，而是给 AI 装上一套能持续进化的业务驾驶系统。
+> 让 AI 每次开工都知道你是谁、正在推进什么、哪些资料可信，以及出错后该怎样修正。
 
-## 你缺的通常不是资料，而是 Harness
+## 从“存了很多资料”到“AI 能持续工作”
 
-很多人的“知识库”只是一个越来越大的文件夹：资料不少，但每开一个新会话，AI 仍然要从头认识用户、重新理解业务、猜哪个版本有效。
+文件数量并不等于知识可用。真正的问题通常是：新会话找不到入口、不同版本互相冲突、业务规则散落各处，用户纠正过的错误下一次还会重演。
 
-真正能工作的知识库，至少要回答六个问题：
+一套能长期运转的 AI 知识库，需要同时完成六件事：
 
-1. AI 从哪里启动？
-2. 它在为谁服务，应该怎样协作？
-3. 遇到反复发生的事情，默认怎么做？
-4. 当前最重要的工作是什么？
-5. 原始资料和事实源在哪里？
-6. 执行出错或被用户纠正以后，怎样写回系统？
+1. 给 Agent 一个固定、可靠的启动入口；
+2. 让它理解服务对象和协作方式；
+3. 把重复发生的任务沉淀为默认程序；
+4. 持续标记当前优先事项；
+5. 让结论能够回到原始资料和事实源；
+6. 把检查结果与用户纠正写回系统，供下一次执行复用。
 
-`shengjiang-knowledge` 把这些问题接成一条闭环：
+`aningneo-knowledge` 用 Harness 把这些环节串成闭环：
 
 ```text
 输入 → 约束 → 执行 → 输出 → 反馈 → 进化
 ```
 
-它借鉴成熟 Harness 知识库的核心思路，但不会强迫所有人照抄一套目录。空目录用最小模板；已有资料库优先保留原结构，只补真正缺失的入口、导航、规则和 Sensors。
+它不会要求所有人套用同一套目录。面对空目录时，从最小骨架开始；面对已有资料库时，尽量保留原结构，只补齐缺失的入口、导航、规则和检查机制。
 
 ## 一张图看全系统
 
-![shengjiang-knowledge 从输入源、Harness Core、知识区域、业务输出到经验飞轮和 Sensors 的全景架构](assets/shengjiang-knowledge-panorama.png)
+![aningneo-knowledge 从输入源、Harness Core、知识区域、业务输出到经验飞轮和 Sensors 的全景架构](assets/aningneo-knowledge-panorama.png)
 
-这张图里最重要的不是目录数量，而是六个环节已经连起来：输入有归口、执行有约束、资料有区域、输出有去向、经验能沉淀、系统会自检。
+图里的重点不是文件夹有多少，而是资料进入、规则约束、任务执行、结果交付、经验沉淀和健康检查已经形成连续路径。
 
 ## Harness Core 落到哪些文件
 
@@ -85,7 +85,7 @@
 
 适合知识库已经在使用，但担心慢慢失效的情况。
 
-![shengjiang-knowledge 自检优先级](assets/shengjiang-knowledge-audit.png)
+![aningneo-knowledge 自检优先级](assets/aningneo-knowledge-audit.png)
 
 默认只读检查：
 
@@ -155,16 +155,16 @@
 ## 安装
 
 ```bash
-npx -y skills@latest add aslanyushengjiang-coder/shengjiang-skills \
-  --skill shengjiang-knowledge \
+npx -y skills@latest add 8533502-dev/ANingNeo-skills \
+  --skill aningneo-knowledge \
   -y
 ```
 
 也可以使用 GitHub CLI：
 
 ```bash
-gh skill install aslanyushengjiang-coder/shengjiang-skills \
-  shengjiang-knowledge \
+gh skill install 8533502-dev/ANingNeo-skills \
+  aningneo-knowledge \
   --agent codex \
   --scope user
 ```
@@ -172,11 +172,11 @@ gh skill install aslanyushengjiang-coder/shengjiang-skills \
 ## 直接这样用
 
 ```text
-调用 shengjiang-knowledge，把这个文件夹搭成 AI 系统知识库，先审计和预览。
-调用 shengjiang-knowledge，按自媒体模式搭建知识库，管理对标、选题、文稿和发布数据，先预览。
-调用 shengjiang-knowledge，读取这批资料，区分外部观点和我的判断，先给接入方案。
-调用 shengjiang-knowledge，检查知识库健康状态并保存报告，不要自动修复。
-调用 shengjiang-knowledge，根据巡检报告给修复预览，我确认后再改。
+调用 aningneo-knowledge，把这个文件夹搭成 AI 系统知识库，先审计和预览。
+调用 aningneo-knowledge，按自媒体模式搭建知识库，管理对标、选题、文稿和发布数据，先预览。
+调用 aningneo-knowledge，读取这批资料，区分外部观点和我的判断，先给接入方案。
+调用 aningneo-knowledge，检查知识库健康状态并保存报告，不要自动修复。
+调用 aningneo-knowledge，根据巡检报告给修复预览，我确认后再改。
 ```
 
 ## 脚本
@@ -254,6 +254,6 @@ python3 scripts/scan_materials.py \
 
 ## 参考与演进
 
-`shengjiang-knowledge` 的全景表达参考了小麦老师公开分享的 Harness 知识库实践：输入源、Harness Core、知识区域、输出渠道、经验飞轮和 Sensors 共同形成闭环。
+`aningneo-knowledge` 的全景表达参考了小麦老师公开分享的 Harness 知识库实践：输入源、Harness Core、知识区域、输出渠道、经验飞轮和 Sensors 共同形成闭环。
 
 在此基础上，`v0.1.0`（旧名 `ysj-knowledge`）先实现最小入口、既有目录接入和确定性巡检；`v0.2.0` 更名并补齐公开安装与资料接入；`v0.3.0` 加入自我纠错；`v0.4.0` 增加自媒体工作台模式。

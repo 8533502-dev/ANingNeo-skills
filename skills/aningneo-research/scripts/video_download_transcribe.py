@@ -515,7 +515,7 @@ def download_wechat_with_helper(
     node = shutil.which("node")
     if not node:
         raise RuntimeError("Node.js is required by the WeChat decrypting downloader")
-    with tempfile.TemporaryDirectory(prefix="shengjiang-wechat-video-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="aningneo-wechat-video-") as temporary:
         root = Path(temporary)
         raw_path = root / "detail.json"
         helper_output = root / "download"
@@ -664,12 +664,12 @@ def process_one(
     try:
         if platform_name == "wechat_channels":
             helper = args.wechat_downloader or os.environ.get(
-                "SHENGJIANG_WECHAT_DOWNLOADER", ""
+                "ANINGNEO_WECHAT_DOWNLOADER", ""
             )
             if not helper:
                 raise RuntimeError(
                     "WeChat video detail was fetched, but the decrypting downloader "
-                    "is not configured. Set SHENGJIANG_WECHAT_DOWNLOADER or pass "
+                    "is not configured. Set ANINGNEO_WECHAT_DOWNLOADER or pass "
                     "--wechat-downloader."
                 )
             size = download_wechat_with_helper(
@@ -743,7 +743,7 @@ def process_one(
                     result, cluster = volc_auc.transcribe_url(
                         asr_url,
                         audio_format=asr_format,
-                        uid=f"shengjiang-{platform_name}-{content_id}",
+                        uid=f"aningneo-{platform_name}-{content_id}",
                         timeout_seconds=args.asr_timeout,
                         poll_interval=args.poll_interval,
                     )
@@ -852,7 +852,7 @@ def main() -> int:
         Path(args.out).expanduser().resolve()
         if args.out
         else Path(tempfile.gettempdir())
-        / "shengjiang-video-pipeline"
+        / "aningneo-video-pipeline"
         / datetime.now().strftime("%Y%m%d-%H%M%S")
     )
     manifest_path = root / "manifest.json"

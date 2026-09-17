@@ -1,30 +1,30 @@
-# Shengjiang Skills
+# ANingNeo Skills
 
-余生姜在真实业务中持续使用、测试和迭代的开源 AI Skills。
+ANingNeo Skills 是一组面向真实工作场景的开源 AI Agent 能力包。它不追求堆叠提示词，而是把高频任务整理成可安装、可复用、可检查的完整工作流。
 
-各Skill按使用场景独立命名。这里不收集“看起来很厉害”的提示词；每个 Skill 都必须来自重复发生的真实任务，有明确输入、执行边界、输出结果和自动化验收。
+每个 Skill 都会说明适用场景、输入输出、外部依赖和执行边界。涉及写入、批量请求或付费服务时，默认先给预览和成本，再由用户决定是否继续。
 
 ## 系列目录
 
 | Skill | 解决什么问题 | 状态 |
 | --- | --- | --- |
-| [`shengjiang-knowledge`](skills/shengjiang-knowledge/) | 搭建个人 / 团队 / 自媒体系统知识库，接入已有资料，持续检查健康状态 | v0.4.0 |
-| [`shengjiang-research`](skills/shengjiang-research/) | 用用户自己的付费 TikHub API 调研全平台账号、作品、评论、字幕和公开数据，执行前先算请求与费用 | [v0.8.0](https://github.com/aslanyushengjiang-coder/shengjiang-research/releases/tag/v0.8.0) |
+| [`aningneo-knowledge`](skills/aningneo-knowledge/) | 搭建个人 / 团队 / 自媒体系统知识库，接入已有资料，持续检查健康状态 | v0.4.0 |
+| [`aningneo-research`](skills/aningneo-research/) | 用用户自己的付费 TikHub API 调研全平台账号、作品、评论、字幕和公开数据，执行前先算请求与费用 | v0.8.0 |
 | [`Jiang-local-store`](skills/jiang-local-store/) | 实体门店菜品、菜单、活动海报与图文笔记；内置模板、参考图和图片API脚本 | v0.1.1；真实门店待验收 |
 
 ## Jiang-local-store｜实体门店 Skill
 
-[下载单个Skill包](https://github.com/aslanyushengjiang-coder/shengjiang-skills/releases/download/Jiang-local-store-v0.1.1/Jiang-local-store.zip) · [使用说明](skills/jiang-local-store/README.md)
+[下载单个Skill包](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/Jiang-local-store.zip) · [使用说明](skills/jiang-local-store/README.md)
 
-一个Skill入口，内置Image 2同步/异步调用脚本、三种SVG模板、四张完整示例预览和番茄牛腩风格参考。不需要另装电商Skill；已有图片可以直接填图和精确文字。
+把门店常见的视觉生产任务收进一个 Skill：菜品图、菜单、活动海报、门头预览和推广笔记可以沿用同一套事实校验与素材流程。包内同时提供 Image 2 同步 / 异步脚本、三种 SVG 模板、四份成品示例和风格参考；已有图片也能直接套版并填写准确文字。
 
 图片服务由使用者自行选择、配置和付费，本包不含Key。真实门店素材仍需独立验收；不自动操作外卖后台、发布图文或上线网站。完整图文排版与网站实现还需要宿主提供相应能力。
 
-## shengjiang-research
+## aningneo-research｜全平台社媒调研
 
-[独立仓库](https://github.com/aslanyushengjiang-coder/shengjiang-research) · [直接下载最新 Skill ZIP](https://github.com/aslanyushengjiang-coder/shengjiang-research/releases/latest/download/shengjiang-research.zip)
+[仓库目录](skills/aningneo-research/) · [直接下载最新 Skill ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-research.zip)
 
-`shengjiang-research` 是从余生姜本地长期使用的全平台调研 Skill 开源出来的 API-first 版本。
+`aningneo-research` 用一套可估价、可抽样验证、可回溯证据的流程，替代零散搜索和手工复制。它先确认接口与单价，再验证少量样本，最后才扩展到批量采集和结构化交付。
 
 它能处理：
 
@@ -37,8 +37,8 @@
 
 Skill 代码采用 MIT 协议免费开源，但 TikHub 是第三方付费 API：
 
-- TikHub 是余生姜基于真实调研使用体验主动推荐的第三方 API 网站；我个人认为它非常好用，尤其适合账号、作品、评论、字幕和公开数据的批量调研；
-- 这是个人使用推荐，不代表 TikHub 官方合作、授权或商务背书；Shengjiang 不自建、不代理、不转售 TikHub，API 服务、收费、稳定性和售后由 TikHub 负责；
+- 自动采集路线接入第三方 TikHub API，适用于账号、作品、评论、字幕和公开数据的批量调研；
+- 这不代表 TikHub 官方合作、授权或商务背书；本项目不自建、不代理、不转售 TikHub，API 服务、收费、稳定性和售后由 TikHub 负责；
 - 用户自行注册、充值并配置自己的 `TIKHUB_API_KEY`；
 - TikHub 官方当前公开口径是多数接口从 `0.001 USD / 次`起，不同端点通常约 `0.001–0.01 USD / 次`，少数特殊端点更高；
 - 新账号当前约有 `0.05 USD` 试用额度，通常可测试约 50 次基础请求；
@@ -60,21 +60,21 @@ Skill 代码采用 MIT 协议免费开源，但 TikHub 是第三方付费 API：
 适用于支持 [Skills CLI](https://www.npmjs.com/package/skills) 的 Agent 项目：
 
 ```bash
-npx -y skills@latest add aslanyushengjiang-coder/shengjiang-skills \
-  --skill shengjiang-research \
+npx -y skills@latest add 8533502-dev/ANingNeo-skills \
+  --skill aningneo-research \
   -y
 ```
 
 安装后可以直接说：
 
 ```text
-调用 shengjiang-research，抓这个小红书账号近 100 条作品和每条一页评论。
+调用 aningneo-research，抓这个小红书账号近 100 条作品和每条一页评论。
 先查 TikHub 端点和价格，拆算请求数与预计费用，只跑 1–3 条样本。
 
-调用 shengjiang-research，调研这 20 个抖音账号。
+调用 aningneo-research，调研这 20 个抖音账号。
 Skill 免费和 API 付费要分开说明，批量前先给我费用预览。
 
-调用 shengjiang-research，处理这份已有的社媒 Excel。
+调用 aningneo-research，处理这份已有的社媒 Excel。
 保留原始文件，清洗去重后生成账号、作品、评论洞察和选题。
 ```
 
@@ -83,29 +83,29 @@ Skill 免费和 API 付费要分开说明，批量前先给我费用预览。
 默认把自己的 Key 保存在 Skill 内的 `scripts/.tikhub_api_key`，首次保存一次即可：
 
 ```bash
-python3 .agents/skills/shengjiang-research/scripts/tikhub_request.py --configure-local-key
-python3 .agents/skills/shengjiang-research/scripts/tikhub_request.py --check-config
+python3 .agents/skills/aningneo-research/scripts/tikhub_request.py --configure-local-key
+python3 .agents/skills/aningneo-research/scripts/tikhub_request.py --check-config
 ```
 
 以后每次运行都会重新读取文件，文件优先于环境变量；只要 Skill 目录保留，换会话或清空环境变量都不需要重填。也支持任意路径的 Key 文件、Skill 根目录 `config.json` 中的 `api_key`、环境变量和 macOS Keychain，不限制保存位置。用户已经提供 Key 时，Agent 直接代存，不反复要求配置环境或确认保存方式。
 
 公开代码包不预置真实 Key。迁移自己的 Skill 时带上 Key 文件或包含它的个人完整包；整个云电脑磁盘重置、重装时覆盖或删除了该文件，仍需从自己的备份恢复。
 
-更多配置、估价和请求说明见 [`references/configuration.md`](skills/shengjiang-research/references/configuration.md) 与 [`references/paid-api-route.md`](skills/shengjiang-research/references/paid-api-route.md)。
+更多配置、估价和请求说明见 [`references/configuration.md`](skills/aningneo-research/references/configuration.md) 与 [`references/paid-api-route.md`](skills/aningneo-research/references/paid-api-route.md)。
 
-## shengjiang-knowledge
+## aningneo-knowledge｜可持续运行的 AI 知识库
 
-![shengjiang-knowledge：输入、约束、执行、输出、反馈与进化的 Harness 闭环](skills/shengjiang-knowledge/assets/shengjiang-knowledge-harness.png)
+![aningneo-knowledge：输入、约束、执行、输出、反馈与进化的 Harness 闭环](skills/aningneo-knowledge/assets/aningneo-knowledge-harness.png)
 
-> 你的文件不是知识库。只有当 AI 能稳定读到用户画像、当前工作、业务规则和原始事实，执行后还能接受检查、记录纠正并升级经验，它才是一套能运行的知识库。
+> 资料只有被 AI 稳定找到、正确理解、按规则使用，并能在纠正后更新经验，才真正构成一套可运行的知识系统。
 
 它提供搭建、自媒体模式、资料接入、健康检查、修复和自我纠错六个工作流。
 
 安装：
 
 ```bash
-npx -y skills@latest add aslanyushengjiang-coder/shengjiang-skills \
-  --skill shengjiang-knowledge \
+npx -y skills@latest add 8533502-dev/ANingNeo-skills \
+  --skill aningneo-knowledge \
   -y
 ```
 
@@ -118,10 +118,12 @@ npx -y skills@latest add aslanyushengjiang-coder/shengjiang-skills \
 - 有清晰边界、自动化测试和可验证结果；
 - 不把第三方 API、免费额度或私有连接器说成自建能力。
 
-## 作者
+## 维护者
 
-余生姜（GitHub: [@aslanyushengjiang-coder](https://github.com/aslanyushengjiang-coder)）
+ANingNeo（GitHub: [@8533502-dev](https://github.com/8533502-dev)）
 
-## License
+## 来源与许可
 
-[MIT](LICENSE)
+本仓库基于 [aslanyushengjiang-coder/shengjiang-skills](https://github.com/aslanyushengjiang-coder/shengjiang-skills) 按 MIT License 二次开发，保留上游 Git 历史、许可证及第三方声明。ANingNeo 版本调整了品牌标识和对外说明，原有使用流程与功能边界保持不变。
+
+来源说明见 [NOTICE](NOTICE.md)，许可证见 [MIT](LICENSE)。

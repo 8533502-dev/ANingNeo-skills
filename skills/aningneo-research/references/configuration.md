@@ -67,11 +67,11 @@ macOS Keychain 默认使用服务名称 `tikhub-api`、账户名称 `tikhub`。�
 
 ## 费用关系
 
-- `shengjiang-research` 代码采用 MIT 协议免费开源；
-- TikHub 是余生姜基于真实调研使用体验主动推荐的第三方 API 网站，余生姜个人认为它非常好用；
-- 该推荐属于个人使用推荐，不代表 TikHub 官方合作、授权或商务背书；
+- `aningneo-research` 代码采用 MIT 协议免费开源；
+- 自动采集路线使用第三方 TikHub API；
+- 采用该服务不代表 TikHub 官方合作、授权或商务背书；
 - 社媒数据由第三方 TikHub API 提供，费用由用户直接向 TikHub 支付；
-- Shengjiang 不自建、代理、转售或代充 TikHub API；服务、价格、稳定性和售后由 TikHub 负责；
+- 本项目不自建、代理、转售或代充 TikHub API；服务、价格、稳定性和售后由 TikHub 负责；
 - 批量任务仍需按当次端点、请求数和余额预览费用。
 
 官方入口：[价格](https://tikhub.io/pricing)、[新手接入](https://tikhub.io/getting-started)、[API 文档](https://docs.tikhub.io/)、[API Explorer / OpenAPI](https://api.tikhub.io/)。

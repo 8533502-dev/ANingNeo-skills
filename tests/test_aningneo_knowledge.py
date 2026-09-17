@@ -9,7 +9,7 @@ import unittest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILL_ROOT = REPO_ROOT / "skills" / "shengjiang-knowledge"
+SKILL_ROOT = REPO_ROOT / "skills" / "aningneo-knowledge"
 INIT_SCRIPT = SKILL_ROOT / "scripts" / "init_knowledge_base.py"
 AUDIT_SCRIPT = SKILL_ROOT / "scripts" / "audit_knowledge_base.py"
 SCAN_SCRIPT = SKILL_ROOT / "scripts" / "scan_materials.py"
@@ -24,10 +24,10 @@ def run(*args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
-class ShengjiangKnowledgeTests(unittest.TestCase):
+class ANingNeoKnowledgeTests(unittest.TestCase):
     def test_skill_package_is_complete(self) -> None:
         skill_text = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
-        self.assertTrue(skill_text.startswith("---\nname: shengjiang-knowledge\n"))
+        self.assertTrue(skill_text.startswith("---\nname: aningneo-knowledge\n"))
         self.assertLessEqual(len(skill_text.splitlines()), 500)
         self.assertIn("references/architecture.md", skill_text)
         self.assertIn("references/audit-rules.md", skill_text)
@@ -40,7 +40,7 @@ class ShengjiangKnowledgeTests(unittest.TestCase):
         self.assertTrue(SCAN_SCRIPT.is_file())
 
         evals = json.loads((SKILL_ROOT / "evals" / "evals.json").read_text(encoding="utf-8"))
-        self.assertEqual(evals["skill_name"], "shengjiang-knowledge")
+        self.assertEqual(evals["skill_name"], "aningneo-knowledge")
         self.assertEqual(len(evals["evals"]), 6)
         self.assertTrue(all(item["assertions"] for item in evals["evals"]))
 

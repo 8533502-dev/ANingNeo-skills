@@ -11,7 +11,7 @@ from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skills" / "shengjiang-research"
+SKILL = ROOT / "skills" / "aningneo-research"
 SCRIPT = SKILL / "scripts" / "tikhub_request.py"
 VIDEO_SCRIPT = SKILL / "scripts" / "video_download_transcribe.py"
 
@@ -78,7 +78,7 @@ def run_video_script(*args, **kwargs):
 
 def load_request_module(skill):
     spec = importlib.util.spec_from_file_location(
-        "shengjiang_test_request", skill / "scripts" / "tikhub_request.py"
+        "aningneo_test_request", skill / "scripts" / "tikhub_request.py"
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -90,7 +90,7 @@ def load_video_module():
     if scripts_dir not in sys.path:
         sys.path.insert(0, scripts_dir)
     spec = importlib.util.spec_from_file_location(
-        "shengjiang_video_download_transcribe", VIDEO_SCRIPT
+        "aningneo_video_download_transcribe", VIDEO_SCRIPT
     )
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
@@ -98,7 +98,7 @@ def load_video_module():
     return module
 
 
-class ShengjiangResearchSkillTests(unittest.TestCase):
+class ANingNeoResearchSkillTests(unittest.TestCase):
     def test_public_package_contains_no_local_paths_or_secret_assignments(self):
         texts = []
         for path in public_skill_files():
@@ -116,16 +116,16 @@ class ShengjiangResearchSkillTests(unittest.TestCase):
 
     def test_skill_is_api_first_and_discloses_cost(self):
         content = (SKILL / "SKILL.md").read_text(encoding="utf-8")
-        self.assertIn("name: shengjiang-research", content)
+        self.assertIn("name: aningneo-research", content)
         self.assertIn("下载视频", content.split("---", 2)[1])
         self.assertIn("视频转逐字稿", content.split("---", 2)[1])
         self.assertIn("API-first", content)
         self.assertIn("Skill 采用 MIT 协议免费开源", content)
         self.assertIn("第三方 TikHub API", content)
-        self.assertIn("基于真实调研使用体验主动推荐", content)
-        self.assertIn("个人认为它非常好用", content)
+        self.assertIn("自动采集使用第三方 TikHub API", content)
+        self.assertIn("适用于账号、作品、评论、字幕和公开数据", content)
         self.assertIn("不代表 TikHub 官方合作、授权或商务背书", content)
-        self.assertIn("不是 Shengjiang 自建、代理或转售", content)
+        self.assertIn("本项目不自建、代理或转售", content)
         self.assertIn("0.001–0.01 USD", content)
         self.assertIn("价格计算接口", content)
         self.assertNotIn("社媒助手免费手动路线", content)
@@ -212,7 +212,7 @@ class ShengjiangResearchSkillTests(unittest.TestCase):
         payload = json.loads(
             (SKILL / "evals" / "evals.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(payload["skill_name"], "shengjiang-research")
+        self.assertEqual(payload["skill_name"], "aningneo-research")
         self.assertGreaterEqual(len(payload["evals"]), 10)
         prompts = "\n".join(item["prompt"] for item in payload["evals"])
         self.assertIn("大概花多少钱", prompts)
