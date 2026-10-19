@@ -1,181 +1,171 @@
-# ANingNeo Skills · 自媒体与企业知识工作流
+# ANingNeo Skills
 
-> 把内容生产中反复出现的环节——找资料、做调研、拆爆款、管知识——交给 AI 按规则稳定完成。
+**给 AI Agent 用的工作手册合集。** 装进 WorkBuddy、Codex、Claude Code 这类 Agent 后，它就知道一件活该先问什么、按什么顺序做、做到哪一步要停下来等你点头、最后交出什么。
 
-ANingNeo Skills 是一组开源 AI Agent 能力包，核心服务自媒体创作：搭建内容知识库、调研全平台账号与作品、深度拆解短视频。知识库 Skill 另带企业三库模式，可直接用于公司资料整理，尤其适合文旅、研学和营地类机构。
+[⬇ 下载最新版](https://github.com/8533502-dev/ANingNeo-skills/releases/latest) ｜ [📂 打开 skills 目录](skills/)
 
-[下载最新版本](https://github.com/8533502-dev/ANingNeo-skills/releases/latest) · [浏览全部 Skills](skills/)
+---
 
-## Skill 一览
+## 三十秒找到你要的
 
-| Skill | 用来做什么 | 版本 |
+**你在做短视频 / 图文账号？**
+→ 用 [调研](#调研对标账号和评论) 摸清对标账号，用 [拆解](#拆一条爆款视频) 学透单条爆款，再用 [知识库](#把资料变成-ai-的工作台) 把定位、选题、素材和复盘串起来。
+
+**你在一家公司，资料散落各处？**
+→ 用 [知识库的企业模式](#公司版产品客户sop-三个库) 把产品、客户、流程分别归位。旅行社、研学机构、营地已有现成的行业分类。
+
+**你开了一家店？**
+→ 用 [门店物料](#门店物料) 出菜品图、菜单和活动海报。
+
+| 能力包 | 一句话 | 版本 |
 | --- | --- | --- |
-| [`aningneo-knowledge`](skills/aningneo-knowledge/) | 搭建企业三库（产品 / 客户 / 技能），也可建通用或自媒体知识库 | v0.5.0 · 新增企业模式 |
-| [`aningneo-research`](skills/aningneo-research/) | 用你自己的 TikHub API 调研各平台账号、作品、评论、字幕与公开数据，开跑前先算请求数和费用 | v0.8.0 |
-| [`aningneo-viral-breakdown`](skills/aningneo-viral-breakdown/) | 拆解别人的爆款或复盘自己的视频，交付观看价值、逐段分析、评论、分镜和逐字稿 | v1.0.0 |
-| [`ANingNeo Local Store`](skills/aningneo-local-store/) | 为实体门店制作菜品图、菜单、活动海报、门头预览和图文笔记 | v0.1.1 |
+| [`aningneo-research`](skills/aningneo-research/) | 批量抓各平台的公开账号、作品和评论 | v0.8.0 |
+| [`aningneo-viral-breakdown`](skills/aningneo-viral-breakdown/) | 一条视频，从开头拆到评论区 | v1.0.0 |
+| [`aningneo-knowledge`](skills/aningneo-knowledge/) | 个人 / 自媒体 / 公司知识库，含企业模式 | v0.5.0 |
+| [`aningneo-local-store`](skills/aningneo-local-store/) | 实体门店的图片和推广物料 | v0.1.1 |
 
-推荐的组合方式：`aningneo-research` 负责采集素材 → `aningneo-viral-breakdown` 负责深挖单条作品 → `aningneo-knowledge` 负责把结论、规则和经验沉淀下来。
+每个能力包都能单独装。用 [Skills CLI](https://www.npmjs.com/package/skills) 安装时，只需把最后的名字换掉：
 
-## 仓库约定
+```bash
+npx -y skills@latest add 8533502-dev/ANingNeo-skills --skill aningneo-research -y
+```
 
-- 这里只放可复用的部分：Skill 说明、必要脚本和通用模板。
-- 每个 Skill 都要写清输入、执行边界、交付物和验收方式。
-- 具体某条视频的完整演示项目另建仓库；视频素材、录屏、客户资料、真实工作区和运行产物都留在各自项目里，不整包上传到这里。
+不用命令行的话，去 [Releases](https://github.com/8533502-dev/ANingNeo-skills/releases/latest) 下载对应的 ZIP，解压后把文件夹放进 Agent 的 Skill 目录即可。
 
 ---
 
-## aningneo-knowledge
+## 调研对标账号和评论
 
-### 企业三库：产品库 · 客户库 · 技能库
+`aningneo-research`
 
-选择 `enterprise` 模式即可为公司搭三库：
+你给出账号、链接、关键词，或一份现成的表格，它负责把数据拉下来并整理成表。抖音、小红书、视频号、快手、B站、微博、知乎，以及 TikTok、YouTube、Instagram、X、Reddit 都在范围内。
 
-- **产品库**：线路、酒店、景点、报价、公众号文章等对外产品资料；
-- **客户库**：客户名单、客户档案、导出的聊天记录；
-- **技能库**：团队 SOP、检查清单和常用模板。
+能拿到的东西：主页资料、作品列表、单条详情、评论、字幕、点赞收藏等公开数据、搜索结果。
+最后交给你的：结构化表格、评论洞察、逐字稿、选题建议，敏感字段已脱敏。
 
-Agent 会先了解公司业务和现有资料，原文件原地不动，通过索引接入三库；完成后列出每个库收录了什么、还缺什么。
+**它不会一上来就猛抓。** 顺序永远是：
 
-三库下共预置 24 类文旅行业子库，覆盖产品研发、供应采购、团期交付、交易服务与方法沉淀，可按实际资料逐项启用。模板同时附带任务导航、执行前提、结果核验、中断续办和反馈更新规则。详见 [企业三库模式](skills/aningneo-knowledge/references/enterprise-mode.md) 与 [安装和完整提示词](skills/aningneo-knowledge/README.md)。
+1. 找到对应接口，算出这次要发多少请求、大概花多少钱；
+2. 先抓 1–3 条给你看字段对不对；
+3. 你确认后才批量。
 
-### 不只是存文件，而是让 AI 能持续干活
+试着这样说：
 
-![aningneo-knowledge：输入、约束、执行、输出、反馈与进化的 Harness 闭环](skills/aningneo-knowledge/assets/aningneo-knowledge-harness.png)
-
-> 文件堆在一起还不算知识库。AI 能稳定读到你是谁、手上在做什么、业务规则和原始事实，做完能被检查、被纠正、把经验升级进规则——这才是一套能运转的知识库。
-
-内置六个工作流：搭建、自媒体模式、资料接入、健康检查、修复、自我纠错。
-
-做自媒体选 `creator` 模式，会建立账号定位、对标调研、用户洞察、素材、选题、稿件、发布和复盘等入口，知识库保存在你自己的内容工作区。Claude Code 用户可按需启用 `assets/optional/claude-code/CLAUDE.md`。
-
-```bash
-npx -y skills@latest add 8533502-dev/ANingNeo-skills \
-  --skill aningneo-knowledge \
-  -y
+```text
+用 aningneo-research 看看这个小红书号最近 100 条笔记，每条带一页评论。先报价，再抽 3 条样本。
 ```
 
 ```text
-调用 aningneo-knowledge，用 creator 模式在我指定的目录搭自媒体知识库。
-先看已有资料和目录结构，再补齐定位、对标、素材、选题、稿件、发布和复盘入口。
-每条视频的完整项目单独建仓库，知识库里只留链接。
+我这有一份导出的抖音数据 Excel，用 aningneo-research 帮我去重清洗，再总结评论区大家最关心什么。原表别动。
 ```
 
-[详细说明](skills/aningneo-knowledge/README.md) · [下载 ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-knowledge.zip)
+### 关于钱
 
----
+> Skill 本身不收费；抓数据用的 TikHub 接口按次计费，由你直接付给 TikHub。
 
-## aningneo-viral-breakdown
+- 账号和 Key 需要你自己去 [TikHub](https://tikhub.io/getting-started) 注册、充值、创建。本项目跟 TikHub 没有合作关系，也不经手转售，接口出问题请找 TikHub。
+- 价格量级：大多数接口单次 0.001–0.01 美元，少数特殊接口更贵。新注册约送 0.05 美元，够试几十次。以 [官方价格页](https://tikhub.io/pricing) 为准。
+- 抓 100 条大约 0.1–1 美元，抓 1000 条大约 1–10 美元。翻多少页评论、要不要逐条详情、是否转写语音，都会让数字上下浮动，所以每次都以开跑前的报价为准。
 
-针对一条指定短视频，分析它的观看价值、开头设计、逐段推进、评论反馈和分镜，保留带时间戳的逐字稿，最后提炼成可迁移到你账号的方法。手上已有素材可直接分析；需要在线采集时搭配 `aningneo-research`。
+### 关于 Key
 
-```bash
-npx -y skills@latest add 8533502-dev/ANingNeo-skills \
-  --skill aningneo-viral-breakdown \
-  -y
-```
-
-```text
-调用 aningneo-viral-breakdown，拆解这条视频：[链接或本地文件]。
-保留带时间戳的逐字稿，最后给出适合我账号的方法。
-```
-
-[详细说明](skills/aningneo-viral-breakdown/README.md) · [下载 ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-viral-breakdown.zip)
-
----
-
-## aningneo-research
-
-API 优先的全平台社媒调研 Skill。
-
-**覆盖平台**：抖音、小红书、视频号、快手、微博、B站、知乎、TikTok、YouTube、Instagram、X、Reddit 等。
-
-**能抓什么**：账号资料、作品列表、单条详情、评论、字幕、公开互动数据、关键词搜索结果。
-
-**能做什么**：单条内容分析、账号批量采集、话题调研、评论洞察、逐字稿和结构化表格。全流程为：找端点 → 拆请求数 → 估费用 → 1–3 条小样本 → 批量采集 → 脱敏交付。
-
-### 费用说明
-
-Skill 代码按 MIT 协议免费开源；自动采集用的 TikHub 是第三方付费 API，两者要分开看：
-
-- 本项目选用 TikHub 是因为它在账号、作品、评论、字幕等批量调研上覆盖面广、好用；这不代表 TikHub 官方合作或背书，本项目也不自建、代理或转售它的接口，服务、计费和售后由 TikHub 负责；
-- 你需要自己注册、充值，并配置自己的 `TIKHUB_API_KEY`；
-- 按官方目前公开的价格，多数接口每次 `0.001 USD` 起，常见端点在 `0.001–0.01 USD / 次`，个别特殊端点更贵；
-- 新账号目前有约 `0.05 USD` 试用额度，大致够测 50 次基础请求；
-- 每次批量前，Skill 都会先算请求数、查具体端点单价、给出费用预估，只跑 1–3 条样本，等你确认再批量；
-- 价格、额度和端点都可能调整，以 [TikHub 价格页](https://tikhub.io/pricing)、[接入指南](https://tikhub.io/getting-started) 和端点文档为准。
-
-费用量级参考：
-
-| 成功请求数 | 0.001 USD / 次 | 0.01 USD / 次 |
-| ---: | ---: | ---: |
-| 3 | 0.003 USD | 0.03 USD |
-| 100 | 0.10 USD | 1.00 USD |
-| 1,000 | 1.00 USD | 10.00 USD |
-
-最终花费还取决于每页条数、是否逐条抓详情、评论翻几页、是否用到高价端点和第三方语音转写，Skill 不承诺固定价格。
-
-### 安装与调用
-
-```bash
-npx -y skills@latest add 8533502-dev/ANingNeo-skills \
-  --skill aningneo-research \
-  -y
-```
-
-```text
-调用 aningneo-research，抓这个小红书账号最近 100 条作品，每条带一页评论。
-先查端点和单价，算出请求数和预计费用，只跑 1–3 条样本。
-
-调用 aningneo-research，调研这 20 个抖音账号。
-把 Skill 免费和 API 付费分开讲清，批量前先给我看费用预估。
-
-调用 aningneo-research，处理这份现成的社媒 Excel。
-原文件保留，清洗去重后输出账号、作品、评论洞察和选题建议。
-```
-
-### 配置 Key
-
-Key 默认存在 Skill 目录下的 `scripts/.tikhub_api_key`，保存一次即可长期使用：
+只需设置一次：
 
 ```bash
 python3 .agents/skills/aningneo-research/scripts/tikhub_request.py --configure-local-key
 python3 .agents/skills/aningneo-research/scripts/tikhub_request.py --check-config
 ```
 
-每次运行都会重新读这个文件，且它的优先级高于环境变量；只要 Skill 目录还在，换会话、清空环境变量都不用重填。也可以改用任意路径的 Key 文件、Skill 根目录 `config.json` 里的 `api_key`、环境变量或 macOS Keychain。你已经把 Key 给了 Agent 时，它会直接帮你保存，不会反复让你配置。
+Key 会写进 Skill 目录里的 `scripts/.tikhub_api_key`，之后关掉会话、换终端都还在；这份文件比环境变量优先。不想放这里，也可以用别的路径、`config.json`、环境变量或 macOS 钥匙串。直接把 Key 发给 Agent 也行，它会替你存好。
 
-公开仓库和 Release 包里不含任何真实 Key。迁移时记得带上自己的 Key 文件；如果磁盘重置或重装覆盖了它，需要从自己的备份恢复。
+仓库和下载包里不带任何 Key。换电脑或重装系统时，记得自己备份这份文件。
 
-更多说明见 [`configuration.md`](skills/aningneo-research/references/configuration.md) 和 [`paid-api-route.md`](skills/aningneo-research/references/paid-api-route.md)。
-
-[详细说明](skills/aningneo-research/) · [下载 ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-research.zip)
+参考：[配置说明](skills/aningneo-research/references/configuration.md) · [付费接口说明](skills/aningneo-research/references/paid-api-route.md)
 
 ---
 
-## ANingNeo Local Store
+## 拆一条爆款视频
 
-面向实体门店的视觉内容入口：先核对商品、价格、活动等门店事实，再出图和写文案，可制作菜品图、菜单价目表、活动海报、门头与店内物料预览，以及小红书、抖音、朋友圈图文。图片服务由使用者自选、自配、自付，Skill 不含 API Key，也不会自动操作外卖后台或发布内容。
+`aningneo-viral-breakdown`
 
-[使用说明](skills/aningneo-local-store/README.md) · [下载 ZIP](https://github.com/8533502-dev/ANingNeo-skills/releases/latest/download/aningneo-local-store.zip)
+丢一个链接或视频文件给它，交回一份拆解报告，回答下面这些问题：
+
+- 观众为什么愿意看完？价值点在哪？
+- 前几秒怎么留人，后面每一段怎么推进？
+- 评论区在夸什么、问什么、吵什么？
+- 分镜是怎么安排的？
+
+报告附带带时间戳的完整逐字稿，最后落到"换成你的账号该怎么用"。
+
+已有文稿、字幕或截图？直接给它，不需要 API。只有一个链接？它会调用上面的调研 Skill 去取素材，照样先报价。素材缺哪块就跳过哪块，不会凭空补画面或评论。
+
+```text
+用 aningneo-viral-breakdown 复盘我上周这条视频：[链接]，重点看为什么前 3 秒流失大。
+```
+
+[更多说明](skills/aningneo-viral-breakdown/README.md)
 
 ---
 
-## 收录标准
+## 把资料变成 AI 的工作台
 
-- 源自真实、反复出现的工作场景；
-- 付费项和外部依赖事先讲清楚；
-- 默认先预览，写入文件或批量扣费前先确认范围；
-- 原始事实、外部观点、用户判断、Agent 提炼分层记录；
-- 边界清晰，有自动化测试和可验证的结果；
-- 不把第三方 API、免费额度或私有连接器包装成自有能力。
+`aningneo-knowledge`
 
-## 维护者
+![知识库运转闭环](skills/aningneo-knowledge/assets/aningneo-knowledge-harness.png)
 
-ANingNeo（GitHub：[@8533502-dev](https://github.com/8533502-dev)）
+很多人的"知识库"其实是一个越来越大的文件夹。这个 Skill 想做的是另一件事：让 AI 每次开工前都能读到你是谁、最近在忙什么、哪些规矩不能破、哪些资料可信；做完之后能自查，被你纠正后把教训写回去，下次不再犯。
 
-版本和下载包统一发布在 [GitHub Releases](https://github.com/8533502-dev/ANingNeo-skills/releases)。
+它能帮你：新建知识库、接入已有文件、体检（断链、重复、缺索引、敏感信息）、按建议修复、记录纠错。
 
-## License
+### 自媒体版
 
-[MIT](LICENSE)
+选 `creator` 模式，会搭出一条从账号定位到发布复盘的链路：定位 → 对标 → 用户洞察 → 素材 → 选题 → 草稿 → 定稿 → 发布 → 复盘。
+
+```text
+用 aningneo-knowledge 的 creator 模式，在这个文件夹里给我的账号建知识库。先看看我已经有什么，别直接写。
+```
+
+### 公司版：产品、客户、SOP 三个库
+
+选 `enterprise` 模式：
+
+| 库 | 装什么 |
+| --- | --- |
+| 产品库 | 能卖的东西：线路、酒店、景点、报价、推文 |
+| 客户库 | 跟谁做生意：名单、档案、导出的聊天 |
+| 技能库 | 怎么做事：SOP、清单、模板 |
+
+Agent 会先问清公司业务和资料位置，原文件一个不挪，只在三库里建索引指过去。结束时告诉你每个库收进了什么、还缺什么。
+
+文旅类机构可以直接用预置的 24 个细分目录（研发、采购、团期、交易、复盘等），按需打开。模板里也写好了报价、宣传、投标、分房分车、售后等常见任务该怎么接、怎么查、断了怎么续。
+
+[企业模式完整说明](skills/aningneo-knowledge/references/enterprise-mode.md) · [安装提示词](skills/aningneo-knowledge/README.md)
+
+用 Claude Code 的话，可以按需启用 `assets/optional/claude-code/CLAUDE.md`。
+
+---
+
+## 门店物料
+
+`aningneo-local-store`
+
+菜品图、菜单价目表、活动海报、门头预览、小红书 / 抖音 / 朋友圈图文。先对齐菜名、价格、活动这些硬信息再出图，避免为了好看写错价格。图片接口由你自己选、自己配、自己付费；它不会自动发帖，也不会动外卖后台。
+
+[使用说明](skills/aningneo-local-store/README.md)
+
+---
+
+## 这些 Skill 共同遵守的规矩
+
+- 先给方案，你说可以再动手：写文件前先预览，花钱前先报价。
+- 你的原始文件只读不改，产出另存。
+- 分清"原文写的""别人说的""你认为的""AI 总结的"。
+- 用了第三方服务就明说，不包装成自己的能力。
+- 只收录真实工作中反复出现的场景，每个都配有测试。
+- 这个仓库只放通用能力；具体项目的素材、录屏、客户资料各自单独存放。
+
+## 其他
+
+维护：ANingNeo · [@8533502-dev](https://github.com/8533502-dev)
+更新记录见 [CHANGELOG](CHANGELOG.md)，下载包见 [Releases](https://github.com/8533502-dev/ANingNeo-skills/releases)。
+许可：[MIT](LICENSE)
